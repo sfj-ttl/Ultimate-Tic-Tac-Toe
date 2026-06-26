@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>超级井字棋</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="menuScreen" class="menu-screen">
+    <section class="menu">
+      <header class="menu-head">
+        <h1>超级井字棋</h1>
+        <p id="menuStatus">选择对局模式</p>
+      </header>
+
+      <div class="mode-grid" aria-label="选择模式">
+        <button class="mode-card selected" type="button" data-menu-mode="pvp">
+          <strong>双人对战</strong>
+          <span>本地两位玩家轮流落子</span>
+        </button>
+        <button class="mode-card" type="button" data-menu-mode="pve">
+          <strong>人机对战</strong>
+          <span>玩家执 X，AI 执 O</span>
+        </button>
+      </div>
+
+      <section id="aiOptions" class="ai-options is-hidden" aria-label="选择 AI 难度">
+        <h2>AI 难度</h2>
+        <div class="level-grid">
+          <button class="level-card" type="button" data-ai-level="1">
+            <strong>简单</strong>
+            <span>随机合法落子</span>
+          </button>
+          <button class="level-card selected" type="button" data-ai-level="2">
+            <strong>普通</strong>
+            <span>启发式评分</span>
+          </button>
+          <button class="level-card" type="button" data-ai-level="3">
+            <strong>困难</strong>
+            <span>搜索多步局面</span>
+          </button>
+        </div>
+      </section>
+
+      <button id="startGame" class="primary-action" type="button">开始游戏</button>
+    </section>
+  </main>
+
+  <main id="gameScreen" class="app is-hidden">
+    <section class="game">
+      <header class="top">
+        <div>
+          <h1>超级井字棋</h1>
+          <p id="status">正在准备棋局...</p>
+        </div>
+        <div class="actions">
+          <div class="game-mode">
+            <span id="modeInfo">双人对战</span>
+            <strong id="levelInfo"></strong>
+          </div>
+          <button id="newGame" type="button">重新开始</button>
+          <button id="backToMenu" type="button">返回主界面</button>
+        </div>
+      </header>
+      <div id="board" class="board"></div>
+    </section>
+
+    <aside class="panel">
+      <h2>大棋盘</h2>
+      <div id="macro" class="macro"></div>
+      <div class="info"><span>当前玩家</span><strong id="turn">-</strong></div>
+      <div class="info"><span>指定大格</span><strong id="forced">-</strong></div>
+      <div class="info"><span>上一步</span><strong id="lastMove">-</strong></div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
